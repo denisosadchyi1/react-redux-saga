@@ -1,0 +1,21 @@
+.loadButton{
+  width: 200px;
+  margin: 30px auto;
+  button{
+    font-weight: 700;
+    font-style: italic;
+    font-size: 20px;
+    font-family: serif;
+  }
+}
+
+.usersList{
+  display: flex;
+  justify-content: space-between;
+}
+
+.loadingWrapper {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
