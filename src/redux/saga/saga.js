@@ -11,12 +11,12 @@ export function* fetchUsersAsync() {
     yield put(requestUsers());
     const data = yield call(() => {
       return fetch('https://randomuser.me/api/?page=1&results=20')
-              .then(res => res.json())
-            
+              .then(res => res.json())   
     }
   );
     yield put(requestUsersSuccess(data))
   } catch(error) {
+    console.log(error)
     yield put(requestUsersError(error))
   }
 }

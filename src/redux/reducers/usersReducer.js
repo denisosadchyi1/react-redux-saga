@@ -1,6 +1,8 @@
 import { combineReducers } from "redux"
 import { REQUESTED_USERS, REQUESTED_USERS_ERROR, REQUESTED_USERS_SUCCES, REQUESTED_LOAD_USERS, REQUESTED_USERS_LOAD_SUCCES, REQUESTED_USERS_LOAD_ERROR, REQUESTED_USERS_LOADED, CHOOSE_USER } from "../types/actionsType"
 
+//This reducer are trial.
+
 const usersState = {
   users: [],
   loading: false,
@@ -42,9 +44,16 @@ export const showUsersReducer = (state = usersState, action) => {
         error: false
       }
     case CHOOSE_USER:
-      return {
-        ...state,
-        chooseUser: [...state.chooseUser, ...state.users.filter(user => user.id.value === action.payload)],
+      if(state.chooseUser.filter(user => user.id.value === action.payload).length !== 0) {
+        console.log('This user add now')
+        return {
+          ...state
+        }
+      } else {
+        return {
+          ...state,
+          chooseUser: [...state.chooseUser, ...state.users.filter(user => user.id.value === action.payload)],
+        }
       }
   }
   return state
