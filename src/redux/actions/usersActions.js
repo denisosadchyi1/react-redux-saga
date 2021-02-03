@@ -54,9 +54,9 @@ export const putLoadedUsers = (data) => {
   }
 }
 
-export const chooseUser = (payload) => {
+export const chooseUser = (id) => {
   return {
     type: CHOOSE_USER,
-    payload
+    payload: id
   }
 }

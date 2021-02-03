@@ -5,9 +5,12 @@ import {chooseUser} from '../../../redux/actions/usersActions';
 
 const UserListCard = ({ name, url, age, email, id }) => {
   const dispatch = useDispatch()
-  const payload = {
-    id
-    // showState
+  const chooseUserAlert = (id) => {
+    if(id) {
+      dispatch(chooseUser(id))
+    } else {
+      alert('Данного пользователь больше не существует')
+    }
   }
   return (
     <div className={`${s.userCard}`}>
@@ -35,7 +38,7 @@ const UserListCard = ({ name, url, age, email, id }) => {
       <div className={s.userCheckButton}>
         <button 
           className="btn btn-warning"
-          onClick={() => dispatch(chooseUser(payload))}>отметить пользователя</button>
+          onClick={() => chooseUserAlert(id)}>отметить пользователя</button>
       </div>
     </div>
   );

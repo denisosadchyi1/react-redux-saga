@@ -9,7 +9,6 @@ const UserList = () => {
   const loadingShowUsers = useSelector(state => state.user.showUsers.loading)
   const users = useSelector((state) => state.user.showUsers.users);
   const loadingLoadedUsers = useSelector(state => state.user.loadUsers.loading)
-  console.log(users);
   if(loadingShowUsers) {
     return <div className={s.loadingWrapper}><h2>Loading....</h2> </div>
   } else {
