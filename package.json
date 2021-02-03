@@ -22,7 +22,6 @@
     "thunk": "^0.0.1",
     "web-vitals": "^0.2.4"
   },
-  "proxy": "https://randomuser.me",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
