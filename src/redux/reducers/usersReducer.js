@@ -65,6 +65,7 @@ export const showUsersReducer = (state = usersState, action) => {
         return {
           ...state,
           users: tmpsStyles,
+          filterUsers: tmpsStyles,
           chooseUser: [...state.chooseUser, ...state.users.filter(user => user.id.value === action.payload)],
         }
       }
