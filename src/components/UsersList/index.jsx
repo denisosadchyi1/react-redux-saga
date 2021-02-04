@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import s from "./users.module.scss";
 import { loadUsers } from "../../redux/actions/usersActions";
 import UserListCard from "./UserListCard";
-import FilterInput from "../../UI/FilterInput";
+import {FilterInput} from "../../UI/FilterInput";
 
 const UserList = () => {
   const dispatch = useDispatch();
