@@ -1,11 +1,12 @@
 .footer {
-  height: 80px;
-  border: 2px solid rgb(65, 65, 248);
   position: sticky;
   text-align: center;
+  height: 70px;
+  background-color: #007bff;
+  color: #fff;
+  margin: 10px auto;
 }
 
 .footer_content{
-  height: 40px;
-  margin: 20px 0;
+  padding: 15px 0;
 }

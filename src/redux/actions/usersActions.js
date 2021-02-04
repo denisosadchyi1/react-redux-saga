@@ -1,4 +1,4 @@
-import { FETCHED_USERS, REQUESTED_USERS, REQUESTED_USERS_SUCCES, REQUESTED_USERS_ERROR, LOAD_USERS, REQUESTED_LOAD_USERS, REQUESTED_USERS_LOAD_SUCCES, REQUESTED_USERS_LOAD_ERROR, REQUESTED_USERS_LOADED, CHOOSE_USER, CHOOSE_USER_STYLES } from "../types/actionsType";
+import { FETCHED_USERS, REQUESTED_USERS, REQUESTED_USERS_SUCCES, REQUESTED_USERS_ERROR, LOAD_USERS, REQUESTED_LOAD_USERS, REQUESTED_USERS_LOAD_SUCCES, REQUESTED_USERS_LOAD_ERROR, REQUESTED_USERS_LOADED, CHOOSE_USER, USERS_NAME_FILTER, USERS_SURNAME_FILTER } from "../types/actionsType";
 
 export const requestUsers = () => {
   return {
@@ -61,8 +61,16 @@ export const chooseUser = (id) => {
   }
 }
 
-export const chooseUserStyles = () => {
+export const firstNameFilter = (text) => {
   return {
-    type: CHOOSE_USER_STYLES
+    type: USERS_NAME_FILTER,
+    payload: text
+  }
+}
+
+export const surnameNameFilter = (text) => {
+  return {
+    type: USERS_SURNAME_FILTER,
+    payload: text
   }
 }

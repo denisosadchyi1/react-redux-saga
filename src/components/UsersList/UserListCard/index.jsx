@@ -1,7 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./userListCard.module.scss";
-import {chooseUser, chooseUserStyles} from '../../../redux/actions/usersActions';
+import {chooseUser} from '../../../redux/actions/usersActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const UserListCard = ({ name, url, age, email, id, styles }) => {
 
@@ -9,7 +11,6 @@ const UserListCard = ({ name, url, age, email, id, styles }) => {
   const chooseUserAlert = (id) => {
     if(id) {
       dispatch(chooseUser(id))
-      dispatch(chooseUserStyles())
     } else {
       alert('Данного пользователь больше не существует')
     }
@@ -17,6 +18,7 @@ const UserListCard = ({ name, url, age, email, id, styles }) => {
   return (
     <div className={`${s.userCard}`}>
       <div className="card-body">
+        {styles ?<FontAwesomeIcon className={s.star} icon={faStar}></FontAwesomeIcon>: ''}
         <div className="row">
           <div className="col-6 col-sm-4 pb-4">
             <img src={url} alt="" />

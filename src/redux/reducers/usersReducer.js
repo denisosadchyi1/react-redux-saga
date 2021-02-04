@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import { REQUESTED_USERS, REQUESTED_USERS_ERROR, REQUESTED_USERS_SUCCES, REQUESTED_LOAD_USERS, REQUESTED_USERS_LOAD_SUCCES, REQUESTED_USERS_LOAD_ERROR, REQUESTED_USERS_LOADED, CHOOSE_USER, CHOOSE_USER_STYLES } from "../types/actionsType"
+import { REQUESTED_USERS, REQUESTED_USERS_ERROR, REQUESTED_USERS_SUCCES, REQUESTED_LOAD_USERS, REQUESTED_USERS_LOAD_SUCCES, REQUESTED_USERS_LOAD_ERROR, REQUESTED_USERS_LOADED, CHOOSE_USER, USERS_NAME_FILTER, USERS_SURNAME_FILTER } from "../types/actionsType"
 
 //This reducer are trial.
 
@@ -8,9 +8,12 @@ const usersState = {
   loading: false,
   error: false,
   chooseUser: [],
+  filterUsers: []
 }
 
 //Test !!! --- !!! Test Reducer
+
+//Переписать логіку фільтрації!!
 
 export const showUsersReducer = (state = usersState, action) => {
   switch(action.type){
@@ -25,6 +28,7 @@ export const showUsersReducer = (state = usersState, action) => {
       return {
         ...state,
         users: action.payload,
+        filterUsers: action.payload,
         loading: false,
         error: false
       }
@@ -40,6 +44,7 @@ export const showUsersReducer = (state = usersState, action) => {
       return {
         ...state,
         users: [...state.users, ...action.payload],
+        filterUsers: [...state.users, ...action.payload],
         loading: false,
         error: false
       }
@@ -63,8 +68,21 @@ export const showUsersReducer = (state = usersState, action) => {
           chooseUser: [...state.chooseUser, ...state.users.filter(user => user.id.value === action.payload)],
         }
       }
-    case CHOOSE_USER_STYLES:
-      console.log('styles')
+    case USERS_NAME_FILTER:
+      let index = action.payload.split('').length - 1
+      console.log(index)
+      console.log(action.payload)
+      return {
+        ...state,
+        filterUsers: [...state.users.filter(user => user.name.first.toLowerCase().includes(action.payload.toLowerCase()))]
+      }
+    case USERS_SURNAME_FILTER:
+      console.log(action.payload)
+      return {
+        ...state,
+        filterUsers: [...state.users.filter(user => user.name.last.toLowerCase().includes(action.payload.toLowerCase()))]
+      }
+
   }
   return state
 }
