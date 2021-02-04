@@ -6,14 +6,11 @@ import s from './header.module.scss';
 
 const Header = () => {
   const chooseUsers = useSelector(state => state.user.showUsers.chooseUser)
-  const testF = (e) => {
-    e.preventDefault()
-  }
   return (
     <div className={s.header}>
       <div className={s.nav}>
-        <NavLink to="/" exact activeClassName={s.active} onClick={(e) => testF(e)}>Home</NavLink>
-        <NavLink to="/choose" exact activeClassName={s.active} onClick={(e) => testF(e)}>Choosed Users</NavLink>
+        <NavLink to="/" exact activeClassName={s.active}>Home</NavLink>
+        <NavLink to="/choose" exact activeClassName={s.active}>Choosed Users</NavLink>
       </div>
       <div className={s.time}>
         <h4 className={s.title}>{chooseUsers.length ? chooseUsers.length : '0'} отмеченных пользователей</h4>
