@@ -1,13 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./userListCard.module.scss";
-import {chooseUser} from '../../../redux/actions/usersActions';
+import {chooseUser, chooseUserStyles} from '../../../redux/actions/usersActions';
 
-const UserListCard = ({ name, url, age, email, id }) => {
+const UserListCard = ({ name, url, age, email, id, styles }) => {
+
   const dispatch = useDispatch()
   const chooseUserAlert = (id) => {
     if(id) {
       dispatch(chooseUser(id))
+      dispatch(chooseUserStyles())
     } else {
       alert('Данного пользователь больше не существует')
     }
@@ -37,7 +39,7 @@ const UserListCard = ({ name, url, age, email, id }) => {
       </div>
       <div className={s.userCheckButton}>
         <button 
-          className="btn btn-warning"
+          className={styles ? `btn ${s.button_color}` : `btn btn-warning`}
           onClick={() => chooseUserAlert(id)}>отметить пользователя</button>
       </div>
     </div>

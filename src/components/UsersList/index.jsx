@@ -8,6 +8,7 @@ const UserList = () => {
   const dispatch = useDispatch();
   const loadingShowUsers = useSelector(state => state.user.showUsers.loading)
   const users = useSelector((state) => state.user.showUsers.users);
+  const chooseUser = useSelector((state) => state.user.showUsers.chooseUser);
   const loadingLoadedUsers = useSelector(state => state.user.loadUsers.loading)
   if(loadingShowUsers) {
     return <div className={s.loadingWrapper}><h2>Loading....</h2> </div>
@@ -18,7 +19,7 @@ const UserList = () => {
         <div className="row">
           {users.map(user => (
             <div className="col-sm-4 mb-4" key={user.id.value + Math.random()}>
-              <UserListCard name={user.name} gender={user.gender} email={user.email} age={user.dob.age} url={user.picture.medium} id={user.id.value} />
+              <UserListCard name={user.name} gender={user.gender} email={user.email} age={user.dob.age} url={user.picture.medium} id={user.id.value} styles={user.styles} />
             </div>
           ) )}
         </div>

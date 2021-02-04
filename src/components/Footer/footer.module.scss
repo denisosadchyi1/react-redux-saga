@@ -1,5 +1,11 @@
 .footer {
-  height: 70px;
+  height: 80px;
   border: 2px solid rgb(65, 65, 248);
   position: sticky;
+  text-align: center;
+}
+
+.footer_content{
+  height: 40px;
+  margin: 20px 0;
 }

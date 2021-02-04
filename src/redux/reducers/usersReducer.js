@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import { REQUESTED_USERS, REQUESTED_USERS_ERROR, REQUESTED_USERS_SUCCES, REQUESTED_LOAD_USERS, REQUESTED_USERS_LOAD_SUCCES, REQUESTED_USERS_LOAD_ERROR, REQUESTED_USERS_LOADED, CHOOSE_USER } from "../types/actionsType"
+import { REQUESTED_USERS, REQUESTED_USERS_ERROR, REQUESTED_USERS_SUCCES, REQUESTED_LOAD_USERS, REQUESTED_USERS_LOAD_SUCCES, REQUESTED_USERS_LOAD_ERROR, REQUESTED_USERS_LOADED, CHOOSE_USER, CHOOSE_USER_STYLES } from "../types/actionsType"
 
 //This reducer are trial.
 
@@ -50,11 +50,21 @@ export const showUsersReducer = (state = usersState, action) => {
           ...state
         }
       } else {
+        let tmpsStyles = state.users.map(user => {
+          if(user.id.value === action.payload) {
+            user = {...user, styles: true}
+          }
+          return user
+        });
+        console.log(tmpsStyles)
         return {
           ...state,
+          users: tmpsStyles,
           chooseUser: [...state.chooseUser, ...state.users.filter(user => user.id.value === action.payload)],
         }
       }
+    case CHOOSE_USER_STYLES:
+      console.log('styles')
   }
   return state
 }
